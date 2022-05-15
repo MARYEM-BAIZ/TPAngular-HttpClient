@@ -1,0 +1,49 @@
+<div class="container custom-container-2">
+  <div class="no-data text-center" *ngIf="Employee.length == 0">
+    <p>aucun employé n'est enregistré</p>
+
+    <button class="btn btn-outline-primary" routerLink="/create-employee"></button>
+  </div>
+
+  <div *ngIf="Employee.length !== 0">
+    <h3 class="mb-3 text-center">Liste des employées</h3>
+
+    <div class="col-12">
+      <table class="table table-bordred">
+        <thead>
+          <tr>
+            <th>Id</th>
+
+            <th>Nom</th>
+
+            <th>Mail</th>
+
+            <th>Phone</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let employee of Employee">
+            <td>{{ employee.id }}</td>
+
+            <td>{{ employee.name }}</td>
+
+            <td>{{ employee.email }}</td>
+
+            <td>{{ employee.phone }}</td>
+
+            <td>
+              <button class="edit" routerLink="/employee-edit/{{ employee.id }}">Edit</button>
+
+              <br>
+
+              <button class="delete" (click)="deleteEmployee(employee.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
